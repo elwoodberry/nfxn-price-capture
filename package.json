@@ -1,0 +1,14 @@
+{
+  "name": "price-capture",
+  "version": "1.0.0",
+  "description": "To determine if the market is open or closed.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "me@elwoodberry.com",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.18.1"
+  }
+}
