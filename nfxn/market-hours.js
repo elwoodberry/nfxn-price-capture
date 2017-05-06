@@ -8,44 +8,61 @@ Property of NFXN.IO
 var moment = require('moment');
 
 exports.session = function(){
-    var phraseOne = "We Are In The ",
-        phraseTwo = " Session",
-        sydney = phraseOne + "Sydney" + phraseTwo,
-        tokyo = phraseOne + "Tokyo" + phraseTwo,
-        london = phraseOne + "London" + phraseTwo,
-        newyork = phraseOne + "New York" + phraseTwo,
-        sydneyTwo = phraseOne + "Sydney" + phraseTwo,
-        tokyoTwo = phraseOne + "Tokyo" + phraseTwo;
 
-    var hour = moment().hour();
-        currentTime = moment().format("h:mm:ss a"),
-        currentMinute = moment().format("mm");
+    var sydneyTokyoEnd = "Sydney / Tokyo (2nd)",
+        sessionGap = "Session Gap"
+        london = "London",
+        londonNewYork = "London / New York"
+        newyork = "New York",
+        sydneyBegin = "Sydney",
+        sydneyTokyoBegin = "Sydney / Tokyo (1st)";
 
-    console.log("The Current Time Is " + currentTime);
+    var hour = moment().hour(),
+        minute = moment().format("mm");
 
-    // Sydney (12:00am - 2:00am)
-    if(hour >= 0 && hour <=2 ){
-        return console.log(sydney);
+    // Sydney/Tokyo (12:00am - 1:59am)
+    if (hour >= 0 && hour <= 1 && minute >= 0 && minute <= 59){
+        // console.log(sydneyTokyoEnd);
+        return String(sydneyTokyoEnd);
     }
-    // Tokyo (12:00am - 2:15am)
-    if(hour >= 0 && hour <= 2){
-        return console.log(tokyo);
+
+    // Session Gap (2:00am - 2:59am)
+    if (hour == 2 && minute >= 0 && minute <= 59){
+        // console.log(sessionGap);
+        return String(sessionGap);
     }
-    // London (3:00am - 12:00pm)
-    if(hour >= 3 && hour <= 12){
-        return console.log(london);
+
+    // London (3:00am - 7:59am)
+    if (hour >= 3 && hour <= 7 && minute >= 0 && minute <= 59){
+        // console.log(london);
+        return String(london);
     }
-    // New York (8:00am - 5:00pm)
-    if(hour >= 8 && hour <= 17){
-        return console.log(newyork);
+
+    // London / New York (8:00am - 11:59am)
+    if (hour >= 8 && hour <= 11 && minute >= 0 && minute <= 59){
+        // console.log(londonNewYork);
+        return String(londonNewYork);
     }
-    // Sydney (5:00pm - 11:59pm)
-    if(hour >= 17 && hour <= 11){
-        return console.log(sydneyTwo);
+
+    // New York (12:00pm - 4:59pm)
+    if (hour >= 12 && hour <= 16 && minute >= 0 && minute <= 59){
+        // console.log(newyork);
+        return String(newyork);
     }
-    // Tokyo (8:00pm - 11:59pm)
-    if(hour >= 8 && hour <= 11){
-        return console.log(tokyoTwo);
+
+    // Sydney (5:00pm - 7:59pm)
+    if (hour >= 17 && hour <= 19 && minute >= 0 && minute <= 59){
+        // console.log(sydneyBegin);
+        return String(sydneyBegin);
+    }
+
+    // Sydney / Tokyo (8:00pm - 11:59am)
+    if (hour >= 20 && hour <= 23 && minute >= 0 && minute <= 59){
+        // console.log(sydneyTokyoBegin);
+        return String(sydneyTokyoBegin);
     }
 
 };
+
+
+exports.tradesession = exports.session();

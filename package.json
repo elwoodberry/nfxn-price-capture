@@ -8,9 +8,15 @@
   },
   "author": "me@elwoodberry.com",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elwoodberry/nfxn-price-capture.git"
+  },
   "dependencies": {
     "cheerio": "^0.22.0",
     "moment": "^2.18.1",
+    "moment-range": "^3.0.3",
+    "mongojs": "^2.4.0",
     "request": "^2.81.0"
   }
 }
